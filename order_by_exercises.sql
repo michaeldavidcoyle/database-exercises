@@ -7,7 +7,7 @@ USE employees;
 SELECT *
 FROM employees
 WHERE first_name IN ('Irena', 'Vidya', 'Maya')
-ORDER BY last_name, first_name;
+ORDER BY last_name, first_name DESC;
 # Contrary to what the exercise says, first result is Irena Bisiani, last is Vidya Peac when ordering by first name.
 # Order by first and last name gives Irena Acton first but Vidya Zweizig last.
 # Ordering by last name and then first name still returns Irena Acton first but Maya Zyda last.
@@ -17,7 +17,7 @@ ORDER BY last_name, first_name;
 SELECT *
 FROM employees
 WHERE last_name LIKE 'E%'
-ORDER BY emp_no;
+ORDER BY emp_no DESC;
 
 # Find all employees with a 'q' in their last name — 1,873 rows.
 SELECT *
