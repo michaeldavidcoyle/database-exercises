@@ -37,3 +37,9 @@ SELECT *
 FROM employees
 WHERE last_name LIKE 'E%'
    OR last_name LIKE '%E';
+
+# Duplicate the previous query and update it to find all employees whose last name starts and ends with 'E' — 899 rows.
+SELECT *
+FROM employees
+WHERE last_name LIKE 'E%'
+   AND last_name LIKE '%E';
