@@ -14,7 +14,7 @@ where name = 'Nevermind';
 
 select name as '----90s Albums----'
 from albums
-where release_date >= 1990 and release_date <= 1999;
+where release_date between 1990 and 1999;
 
 select name as '----Albums with < 20 million in sales----'
 from albums
