@@ -13,9 +13,11 @@ ORDER BY last_name, first_name;
 # Ordering by last name and then first name still returns Irena Acton first but Maya Zyda last.
 
 # Find all employees whose last name starts with 'E' — 7,330 rows.
+# Update your queries for employees with 'E' in their last name to sort the results by their employee number. Your results should not change!
 SELECT *
 FROM employees
-WHERE last_name LIKE 'E%';
+WHERE last_name LIKE 'E%'
+ORDER BY emp_no;
 
 # Find all employees with a 'q' in their last name — 1,873 rows.
 SELECT *
