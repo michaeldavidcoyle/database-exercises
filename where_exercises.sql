@@ -31,3 +31,9 @@ WHERE (
         OR first_name = 'Maya'
     )
   AND gender = 'M';
+
+# Find all employees whose last name starts or ends with 'E' — 30,723 rows.
+SELECT *
+FROM employees
+WHERE last_name LIKE 'E%'
+   OR last_name LIKE '%E';
