@@ -28,3 +28,12 @@ WHERE MONTH(e.birth_date) = 12
   AND DAY(e.birth_date) = 25
   AND YEAR(e.hire_date) BETWEEN 1990 AND 1999
 ORDER BY e.birth_date, e.hire_date DESC;
+
+# For your query of employees born on Christmas and hired in the 90s, use datediff() to find how many
+# days they have been working at the company (Hint: You might also need to use now() or curdate()).
+SELECT CONCAT(e.first_name, ' ', e.last_name) AS Name, e.birth_date AS Birthday, e.hire_date AS Hired,
+       DATEDIFF(CURDATE(), e.hire_date) AS 'Days With Company'
+FROM employees.employees e
+WHERE MONTH(e.birth_date) = 12
+  AND DAY(e.birth_date) = 25
+  AND YEAR(e.hire_date) BETWEEN 1990 AND 1999;
