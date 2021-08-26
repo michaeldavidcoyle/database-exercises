@@ -15,8 +15,10 @@ where e.last_name like 'e%e'
 group by e.last_name, e.first_name;
 
 # Find the unique last names with a 'q' but not 'qu'.
-select e.last_name
+# Add a COUNT() to your results and use ORDER BY to make it easier to find employees whose unusual name is shared with others.
+select e.last_name, count(e.last_name) name_count
 from employees.employees e
 where e.last_name like '%q%'
   and e.last_name not like '%qu%'
-group by e.last_name;
+group by e.last_name
+order by name_count desc;
