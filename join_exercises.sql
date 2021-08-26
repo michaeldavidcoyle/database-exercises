@@ -86,6 +86,18 @@ where dm.to_date = '9999-01-01'
   and e.gender = 'F';
 
 # Find the current titles of employees currently working in the Customer Service department.
+select t.title as Title, count(t.title) as Total
+from employees.employees e
+         join dept_emp de
+              on de.emp_no = e.emp_no
+         join departments d
+              on d.dept_no = de.dept_no
+         join titles t
+              on t.emp_no = e.emp_no
+where d.dept_name = 'Customer Service'
+  and year(de.to_date) = 9999
+  and year(t.to_date) = 9999
+group by t.title;
 
 # Find the current salary of all current managers.
 select d.dept_name 'Department Name', concat(e.first_name, ' ', e.last_name) 'Department Manager', s.salary Salary
