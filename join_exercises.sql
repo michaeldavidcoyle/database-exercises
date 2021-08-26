@@ -84,3 +84,16 @@ from employees.employees e
                     on d.dept_no = dm.dept_no
 where dm.to_date = '9999-01-01'
   and e.gender = 'F';
+
+# Find the current titles of employees currently working in the Customer Service department.
+
+# Find the current salary of all current managers.
+select d.dept_name 'Department Name', concat(e.first_name, ' ', e.last_name) 'Department Manager', s.salary Salary
+from employees.employees e
+         join dept_manager dm
+              on dm.emp_no = e.emp_no
+         right join departments d
+                    on d.dept_no = dm.dept_no
+         join salaries s on e.emp_no = s.emp_no
+where dm.to_date = '9999-01-01'
+  and year(s.to_date) = 9999;
