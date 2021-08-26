@@ -22,3 +22,9 @@ where e.last_name like '%q%'
   and e.last_name not like '%qu%'
 group by e.last_name
 order by name_count desc;
+
+# Update your query for 'Irena', 'Vidya', or 'Maya'. Use count(*) and GROUP BY to find the number of employees for each gender with those names.
+select count(*), e.gender
+from employees.employees e
+where first_name in ('Irena', 'Vidya', 'Maya')
+group by e.gender;
