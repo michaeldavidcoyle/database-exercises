@@ -46,3 +46,11 @@ values ('kristina', 'kristina@example.com', 2),
 select users.name user_name, roles.name role_name
 from users
 join roles on users.role_id = roles.id;
+
+select users.name user_name, roles.name role_name
+from users
+         left join roles on users.role_id = roles.id;
+
+select users.name user_name, roles.name role_name
+from users
+         right join roles on users.role_id = roles.id;
