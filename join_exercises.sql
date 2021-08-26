@@ -41,3 +41,8 @@ values ('kristina', 'kristina@example.com', 2),
        ('peter', 'peter@example.com', 2),
        ('tim', 'tim@example.com', null);
 
+# Use JOIN, LEFT JOIN, and RIGHT JOIN to combine results from the users and roles tables as we did in the lesson.
+# Before you run each query, guess the expected number of results.
+select users.name user_name, roles.name role_name
+from users
+join roles on users.role_id = roles.id;
