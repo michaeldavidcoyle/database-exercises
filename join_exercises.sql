@@ -62,3 +62,13 @@ select count(users.name) as user_count, roles.name as role_name
 from users
          right join roles on users.role_id = roles.id
 group by role_name;
+
+use employees;
+
+select d.dept_name 'Department Name', concat(e.first_name, ' ', e.last_name) 'Department Manager'
+from employees.employees e
+         join dept_manager dm
+              on dm.emp_no = e.emp_no
+         right join departments d
+              on d.dept_no = dm.dept_no
+where dm.to_date = '9999-01-01';
