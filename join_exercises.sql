@@ -33,3 +33,11 @@ VALUES ('bob', 'bob@example.com', 1),
        ('adam', 'adam@example.com', 3),
        ('jane', 'jane@example.com', null),
        ('mike', 'mike@example.com', null);
+
+# Insert 4 new users into the database. One should have a NULL role. The other three should be authors.
+insert into users (name, email, role_id)
+values ('kristina', 'kristina@example.com', 2),
+       ('olivia', 'olivia@example.com', 2),
+       ('peter', 'peter@example.com', 2),
+       ('tim', 'tim@example.com', null);
+
