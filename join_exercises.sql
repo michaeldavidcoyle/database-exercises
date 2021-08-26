@@ -63,8 +63,10 @@ from users
          right join roles on users.role_id = roles.id
 group by role_name;
 
+# employees database
 use employees;
 
+# Write a query that shows each department along with the name of the current manager for that department.
 select d.dept_name 'Department Name', concat(e.first_name, ' ', e.last_name) 'Department Manager'
 from employees.employees e
          join dept_manager dm
@@ -72,3 +74,13 @@ from employees.employees e
          right join departments d
               on d.dept_no = dm.dept_no
 where dm.to_date = '9999-01-01';
+
+# Find the name of all departments currently managed by women.
+select d.dept_name 'Department Name', concat(e.first_name, ' ', e.last_name) 'Department Manager'
+from employees.employees e
+         join dept_manager dm
+              on dm.emp_no = e.emp_no
+         right join departments d
+                    on d.dept_no = dm.dept_no
+where dm.to_date = '9999-01-01'
+  and e.gender = 'F';
