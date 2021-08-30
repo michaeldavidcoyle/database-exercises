@@ -29,3 +29,16 @@ where e.emp_no in (
     where e.gender = 'F'
       and year(dm.to_date) = 9999
 );
+
+# Bonus
+# Find all the department names that currently have female managers.
+select d.dept_name
+from departments d
+where d.dept_no in (
+    select dm.dept_no
+    from dept_manager dm
+             inner join employees.employees e on dm.emp_no = e.emp_no
+    where e.gender = 'F'
+      and year(dm.to_date) = 9999
+)
+group by d.dept_name;
