@@ -42,3 +42,9 @@ where d.dept_no in (
       and year(dm.to_date) = 9999
 )
 group by d.dept_name;
+
+# Find the first and last name of the employee with the highest salary.
+select e.first_name, e.last_name
+from employees.employees e
+    inner join salaries s on e.emp_no = s.emp_no
+where salary = (select max(salary) from salaries);
