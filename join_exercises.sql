@@ -109,3 +109,19 @@ from employees.employees e
          join salaries s on e.emp_no = s.emp_no
 where dm.to_date = '9999-01-01'
   and year(s.to_date) = 9999;
+
+# Bonus Find the names of all current employees, their department name, and their current manager's name.
+select concat(e.first_name, ' ', e.last_name) Employee,
+       d.dept_name                            Department,
+       concat(em.first_name, ' ', em.last_name) Manager
+from employees.employees e
+         join dept_emp de
+              on de.emp_no = e.emp_no
+         join departments d
+              on d.dept_no = de.dept_no
+         join dept_manager dm
+             on d.dept_no = dm.dept_no
+         join employees.employees em
+             on dm.emp_no = em.emp_no
+where year(de.to_date) = 9999
+  and year(dm.to_date) = 9999;
