@@ -22,10 +22,10 @@ where emp_no in (
 # Find all the current department managers that are female.
 select e.first_name, e.last_name
 from employees.employees e
-         inner join dept_manager dm on e.emp_no = dm.emp_no
 where e.emp_no in (
     select e.emp_no
     from employees.employees e
+             inner join dept_manager dm on e.emp_no = dm.emp_no
     where e.gender = 'F'
-)
-and year(dm.to_date) = 9999;
+      and year(dm.to_date) = 9999
+);
