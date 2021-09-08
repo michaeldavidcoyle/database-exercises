@@ -7,31 +7,40 @@ Specifications
   - Each ad is associated with the user that created it.
   - An ad can be in one or more categories (for example, "help wanted", "giveaway", or "furniture")
 
-Queries
-Write SQL queries to answer the following questions:
+    Tables:
+    users (one to many with ads)
+      - id (primary key)
+      - email
+      - password
 
-  - For a given ad, what is the email address of the user that created it?
-  - For a given ad, what category, or categories, does it belong to?
-  - For a given category, show all the ads that are in that category.
-  - For a given user, show all the ads they have posted.
+    ads (many to one with users)
+      - id (primary key)
+      - title
+      - description
+      - user_id (foreign key)
 
-Tables:
-users
-  - id
-  - email
-  - password
+    categories (many to many with ads)
+      - category_id
+      - category
 
-ads
-  - id
-  - title
-  - description
-  - category
+    ads_categories (relates ads and categories)
+      - ad_id
+      - category_id
 
-users_ads
-  - user_id
-  - ad_id
 
-categories
-  - giveaway
-  - for_sale
-  - help_wanted
+ Queries
+ Write SQL queries to answer the following questions:
+
+   - For a given ad, what is the email address of the user that created it?
+   - For a given ad, what category, or categories, does it belong to?
+   - For a given category, show all the ads that are in that category.
+   - For a given user, show all the ads they have posted.
+
+   # find email of user for given ad
+   select u.email
+   from users u
+       inner join users_ads ua
+           on ua.user_id = u.user_id
+       inner join ads a
+           on a.ad_id = ua.ad_id
+   where a.ad_id = 123;
